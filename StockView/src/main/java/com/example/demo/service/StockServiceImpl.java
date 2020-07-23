@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +27,14 @@ public class StockServiceImpl implements StockService{
 		// TODO Auto-generated method stub
 		return stockDao.findAll();
 	}
+
+	@Override
+	@Transactional
+	public Optional<Stock> createStock(Stock stock) {
+	
+		stockDao.save(stock);
+		return Optional.of(stock);
+	}
+
 
 }
